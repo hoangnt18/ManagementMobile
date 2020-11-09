@@ -77,8 +77,7 @@ insert dbo.PhoneCategory(idStore,name) values(1,N'VIVO')
 insert dbo.PhoneCategory(idStore,name) values(1,N'OPPO')
 insert dbo.PhoneCategory(idStore,name) values(1,N'VSMART')
 go
-select * from dbo.StoreCategory
-select * from dbo.PhoneCategory
+
 CREATE TABLE Phone
 (
 	idPhone int not null ,
@@ -97,7 +96,6 @@ insert dbo.Phone(idPhone,name,price) values(2 ,N'SamSung galaxy',500000)
 insert dbo.Phone(idPhone,name,price) values(2 ,N'Head phone SamSung',500000)
 
 go
-
 
 go
 
@@ -362,14 +360,19 @@ GO
 alter proc USP_GetCountQuanlity
 	as
 	begin 
- 		SELECT Phone.name ,sum(BillInfo.count) AS COUNTQUALITY, sum(phone.price) as TotalPrice FROM dbo.Phone
-		LEFT JOIN dbo.BillInfo ON Phone.idItemPhone = BillInfo.idItemPhone
-		GROUP BY Phone.name ORDER BY COUNT(BillInfo.count) DESC 
+
+						SELECT Phone.name ,sum(BillInfo.count) AS COUNTQUALITY, sum(phone.price) as TotalPrice FROM dbo.BillInfo
+						LEFT JOIN dbo.Phone ON Phone.idItemPhone = BillInfo.idItemPhone 
+						GROUP BY Phone.name ORDER BY COUNT(BillInfo.count) DESC
 	end
  go
 
 
+ select * from dbo.BillInfo
+ select * from dbo.bill
+ update 
 
- select * from dbo.Phone, dbo.Bill b, dbo.BillInfo
+
+
 
 
