@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PhoneManagement.DTO
 {
     public class StatisticaldDTO
-    {
+    {   
         private string name;
         private int countQuanlity;
         private float totalPrice;
@@ -26,6 +26,7 @@ namespace PhoneManagement.DTO
 
         public StatisticaldDTO(DataRow row)
         {
+            // khai báo kiểu dữ liệu tương ứng với sql
             this.Name = row["name"].ToString();
             this.CountQuanlity = (int)row["COUNTQUALITY"];
             this.TotalPrice = (float)Convert.ToDouble(row["TotalPrice"]);

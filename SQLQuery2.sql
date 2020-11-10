@@ -357,7 +357,7 @@ select * from dbo.Phone as p, dbo.Bill as b, dbo.BillInfo bi where p.idPhone = b
 select * from dbo.Phone as p , dbo.BillInfo as bi where p.idItemPhone = bi.idItemPhone group by p.idItemPhone
 
 GO
-alter proc USP_GetCountQuanlity
+CREATE proc USP_GetCountQuanlity
 	as
 	begin 
 
@@ -368,9 +368,7 @@ alter proc USP_GetCountQuanlity
  go
 
 
- select * from dbo.BillInfo
- select * from dbo.bill
- update 
+
 
 
 

@@ -33,6 +33,7 @@ namespace PhoneManagement.DAO
 
         public List<Table> GetListPhone(int idPhone)
         {
+            //hàm show danh sách sản phẩm theo id
             List<Table> tableList = new List<Table>();
             string query = "select p.name, p.idPhone, p.price, p.idItemPhone from dbo.Phone p, dbo.PhoneCategory pc where p.idPhone = pc.idPhone and p.idPhone = N'"+ idPhone + "'";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
@@ -47,6 +48,7 @@ namespace PhoneManagement.DAO
 
         public List<Table> GetListPhone1()
         {
+            // hàm show danh sách sản phẩm
             List<Table> tableList = new List<Table>();
             string query = "select p.name, p.idPhone, p.price, p.idItemPhone from dbo.Phone p, dbo.PhoneCategory pc where p.idPhone = pc.idPhone";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
@@ -61,6 +63,7 @@ namespace PhoneManagement.DAO
 
         public bool InsertPhone( int idPhone ,string name, float price)
         {
+            // hàm thêm 1 sản phẩm
             string query = string.Format("insert dbo.Phone(idPhone,name,price) values({0},N'{1}',{2})", idPhone,name, price);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
@@ -69,6 +72,7 @@ namespace PhoneManagement.DAO
 
         public bool UpdatePhone(int idPhone,int idItemPhone ,string name, float price)
         {
+            // hàm update 1 sản pharm
             string query = string.Format("update dbo.Phone set  idPhone = {0},name = N'{1}' , price = {2} where idItemPhone = {3}", idPhone,name, price, idItemPhone);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
@@ -76,7 +80,7 @@ namespace PhoneManagement.DAO
         }
 
         public bool DeletePhone(int idItemPhone)
-        {
+        {   // hàm xóa 1 sản phẩm
             //Trước khi delete Item thì phải xóa item BillInfor
             BillInfoDAO.Instance.DeleteBillInfor(idItemPhone);
             string query = string.Format("delete dbo.Phone where idItemPhone = {0} ", idItemPhone);
@@ -87,6 +91,7 @@ namespace PhoneManagement.DAO
 
           public List<Table> SearchPhoneByName(string name)
         {
+            // hàm liệt ke danh sách sản phẩm điện thoại tìm được
             List<Table> list = new List<Table>();
 
             string query = string.Format("SELECT * FROM dbo.Phone WHERE dbo.fuConvertToUnsign1(name) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);

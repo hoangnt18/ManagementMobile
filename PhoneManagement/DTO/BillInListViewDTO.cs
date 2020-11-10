@@ -28,6 +28,7 @@ namespace PhoneManagement.DTO
 
         public BillInListViewDTO(DataRow row)
         {
+            // khai báo kiểu dữ liệu tương ứng với sql
             this.Name= row["Name"].ToString();
             this.Count = (int)row["count"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());

@@ -122,8 +122,9 @@ namespace PhoneManagement
             txtPayMone.Text = toTalPrice.ToString("c", culture);
         }
 
-        void ChangeAccount(int type) //Hiển thị tên account trên information account
+        void ChangeAccount(int type) 
         {
+            //Hiển thị tên account trên information account
             adminToolStripMenuItem.Enabled = type == 1;
             mtsInformationAccount.Text += " (" + LoginAccount.DisPlayName + ")";
             //MessageBox.Show(LoginAccount.DisPlayName);
@@ -163,6 +164,7 @@ namespace PhoneManagement
         #region Event
         private void Btn_Click(object sender, EventArgs e)
         {
+            // lấy id của mục điện thoại để hiển thị danh sách sản phẩm tương ứng
             int id = ((sender as Button).Tag as PhoneCategoryDTO).IdPhone;
             ShowListPhone(id);
         }
@@ -180,6 +182,7 @@ namespace PhoneManagement
         }
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // hiển thị form admin
             frmAdmin f = new frmAdmin();
             this.Hide();
             f.loginAccount = LoginAccount;
@@ -191,28 +194,34 @@ namespace PhoneManagement
         }
 
         private void F_UpdatePhone(object sender, EventArgs e)
-        {
+        {//sự kiện load lại danh sách mục điện thoại khi uupdate
             LoadPhoneCategory();
             if (lsvBill.Tag != null)
                 ShowBill((lsvBill.Tag as Table).IdItemPhone);
         }
 
         private void F_DeletePhone(object sender, EventArgs e)
-        {
+        {//sự kiện load lại danh sách mục điện thoại khi xóa
             LoadPhoneCategory();
             if (lsvBill.Tag != null)
                 ShowBill((lsvBill.Tag as Table).IdItemPhone);
         }
 
+        
         private void F_InsertPhone(object sender, EventArgs e)
-        {
+        {//sự kiện load lại danh sách mục điện thoại khi insert 
             LoadPhoneCategory();
             if (lsvBill.Tag != null)
+            {
                 ShowBill((lsvBill.Tag as Table).IdItemPhone);
+            }    
+                
+            
         }
 
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //hiển thị form information private
             frmInformationPrivate f = new frmInformationPrivate(LoginAccount);
             f.UpdateAccount += F_UpdateAccount;
             this.Hide();
@@ -222,6 +231,7 @@ namespace PhoneManagement
 
         private void btnRefersh_Click(object sender, EventArgs e)
         {
+            // gọi lại hàm LoadPhoneCategory (danh sách mục điện thoại)
             flpPhoneCate.Controls.Clear();
             LoadPhoneCategory();
         }
@@ -236,14 +246,14 @@ namespace PhoneManagement
         }
 
         private void btnPay_Click(object sender, EventArgs e)
-        {
+        {   // thanh toán hóa đơn, 
             NewBillDTO newBill = lsvBill.Tag as NewBillDTO;
             int discount = (int)nmrDiscount.Value;
 
             double totalPrice = double.Parse(txtPayMone.Text, NumberStyles.Currency, new CultureInfo("vi-VN"));
             double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
-            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(newBill.IdNewBill);
+            int idBill = BillDAO.Instance.GetUncheckBillIDByNewBillID(newBill.IdNewBill);
             if (idBill != -1)
             {
                 if (MessageBox.Show(string.Format("Are you sure you pay the bill number {0}\n Total pay: {1}\n  Discount: {2}\n Final total pay:{3} ", newBill.Name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
@@ -258,6 +268,7 @@ namespace PhoneManagement
 
         private void Btn_Click2(object sender, EventArgs e)
         {
+           // hiển thị hóa đơn tương ứng với hóa đơn mới đang được tạo
             int idNewBill = ((sender as Button).Tag as NewBillDTO).IdNewBill;
             lsvBill.Tag = (sender as Button).Tag;
             txtIdNewBill.Text = idNewBill.ToString();
@@ -265,7 +276,7 @@ namespace PhoneManagement
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
-        {
+        {   // thêm 1 item vào listview khi click
 
             if (txtIdNewBill.Text == "")
             {
@@ -275,7 +286,7 @@ namespace PhoneManagement
 
             // Add sản phẩm vào list view
             NewBillDTO newBill = lsvBill.Tag as NewBillDTO;
-            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(newBill.IdNewBill);
+            int idBill = BillDAO.Instance.GetUncheckBillIDByNewBillID(newBill.IdNewBill);
             int idItemPhone = Int16.Parse(txtIdItemPhone.Text);
             int count = (int)nmrAmount.Value;
 
@@ -295,7 +306,17 @@ namespace PhoneManagement
 
         private void F_UpdateAccount(object sender, AccountEvent e)
         {
+            // sự kiện thêm tên tài khoản khi đăng nhập
             mtsInformationAccount.Text = "Information account (" + e.Acc.DisPlayName + ")";
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogin f = new frmLogin();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+            // đăng xuất
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -356,13 +377,7 @@ namespace PhoneManagement
         }
         #endregion
 
-        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           frmLogin f = new frmLogin();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
-        }
+
     }
 
 }

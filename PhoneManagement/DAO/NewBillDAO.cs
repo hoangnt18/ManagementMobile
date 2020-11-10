@@ -10,17 +10,14 @@ namespace PhoneManagement.DAO
 {
     public class NewBillDAO
     {
+        // tạo thể hiện phần cho phần tử NewBillDao
         private static NewBillDAO instance;
-
-
-
-       
 
         public static int TableWidth = 80;
         public static int TabHeight = 80;
 
         public static NewBillDAO Instance
-        {
+        {// tạo thể hiện cho một NewBillDAO
             get
             {
                 if (instance == null)
@@ -37,6 +34,7 @@ namespace PhoneManagement.DAO
 
         public List<NewBillDTO> LoadNewBill()
         {
+            // hiển thị list NewBill 
             List<NewBillDTO> tableList = new List<NewBillDTO>();
             DataTable data = DataProvider.Instance.ExecuteQuery("  select * from dbo.newBill");
 

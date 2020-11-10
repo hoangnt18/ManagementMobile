@@ -80,8 +80,9 @@
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.adminToolStripMenuItem.Text = "Admin Ctrl + A";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // mtsInformationAccount
@@ -97,14 +98,16 @@
             // tsInformationPrivate
             // 
             this.tsInformationPrivate.Name = "tsInformationPrivate";
-            this.tsInformationPrivate.Size = new System.Drawing.Size(180, 22);
+            this.tsInformationPrivate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.tsInformationPrivate.Size = new System.Drawing.Size(213, 22);
             this.tsInformationPrivate.Text = "Information Private";
             this.tsInformationPrivate.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đăngXuấtToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.đăngXuấtToolStripMenuItem.Text = "Log out";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
@@ -261,6 +264,7 @@
             // 
             this.txtIdNewBill.Location = new System.Drawing.Point(142, 29);
             this.txtIdNewBill.Name = "txtIdNewBill";
+            this.txtIdNewBill.ReadOnly = true;
             this.txtIdNewBill.Size = new System.Drawing.Size(100, 20);
             this.txtIdNewBill.TabIndex = 10;
             // 
@@ -268,6 +272,7 @@
             // 
             this.txtIdItemPhone.Location = new System.Drawing.Point(55, 4);
             this.txtIdItemPhone.Name = "txtIdItemPhone";
+            this.txtIdItemPhone.ReadOnly = true;
             this.txtIdItemPhone.Size = new System.Drawing.Size(80, 20);
             this.txtIdItemPhone.TabIndex = 9;
             // 
@@ -295,6 +300,7 @@
             // 
             this.txtID.Location = new System.Drawing.Point(3, 4);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(46, 20);
             this.txtID.TabIndex = 7;
             // 
@@ -302,6 +308,7 @@
             // 
             this.txtPrice.Location = new System.Drawing.Point(3, 29);
             this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(132, 20);
             this.txtPrice.TabIndex = 6;
             this.txtPrice.Text = "0";
@@ -328,6 +335,7 @@
             // 
             this.txtNamePhone.Location = new System.Drawing.Point(142, 3);
             this.txtNamePhone.Name = "txtNamePhone";
+            this.txtNamePhone.ReadOnly = true;
             this.txtNamePhone.Size = new System.Drawing.Size(111, 20);
             this.txtNamePhone.TabIndex = 0;
             // 

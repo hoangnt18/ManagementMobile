@@ -28,6 +28,7 @@ namespace PhoneManagement.DTO
 
         public PhoneCategoryDTO(DataRow row)
         {
+            // khai báo kiểu dữ liệu tương ứng với sql
             this.IdStore = (int)row["idStore"];
             this.IdPhone = (int)row["idPhone"];
             this.Name = row["name"].ToString();

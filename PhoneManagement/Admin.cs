@@ -163,6 +163,7 @@ namespace PhoneManagement
         #region Events
         private void button1_Click(object sender, EventArgs e)
         {
+            // Load danh sách hóa đơn theo ngày check in khi click
             LoadListBillByDate(dtpkFromDate.Value);
         }
 
@@ -170,6 +171,7 @@ namespace PhoneManagement
 
         private void btnWatch_Click(object sender, EventArgs e)
         {
+           
             LoadListPhone();
         }
 
@@ -346,6 +348,7 @@ namespace PhoneManagement
 
         private void btnPevious_Click(object sender, EventArgs e)
         {
+            // lùi lại 1 trang khi click
 
             int page = Convert.ToInt32(txtPageBill.Text);
 
@@ -357,11 +360,13 @@ namespace PhoneManagement
 
         private void txtPageBill_TextChanged(object sender, EventArgs e)
         {
+            // dtgvTarget thay đổi khi thay nhấn button < << >> >
             dtgvTarget.DataSource = BillDAO.Instance.GetBillListByDateAndPage(dtpkFromDate.Value, Convert.ToInt32(txtPageBill.Text));
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            // chuyển trang kế tiếp khi click
             int page = Convert.ToInt32(txtPageBill.Text);
             int sumRecord = BillDAO.Instance.GetNumBillListByDate(dtpkFromDate.Value);
 

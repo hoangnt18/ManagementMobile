@@ -11,6 +11,7 @@ namespace PhoneManagement.DTO
 
     public class Table
     {
+        // tạo thể hiện phần cho phần tử phone
         private int idPhone;
         private string name;
         private int idItemPhone;
@@ -32,6 +33,7 @@ namespace PhoneManagement.DTO
 
         public Table(DataRow row)
         {
+            // khai báo kiểu dữ liệu tương ứng với sql
             this.IdPhone = (int)row["idPhone"];
             this.Name = row["name"].ToString();
             this.IdItemPhone = (int)row["idItemPhone"];

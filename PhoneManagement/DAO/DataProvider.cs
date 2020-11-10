@@ -27,7 +27,7 @@ namespace PhoneManagement.DAO
 
         private DataProvider() { }
 
-        private string connectionSTR = @"Data Source=DESKTOP-09J6R9U\SQLEXPRESS01;Initial Catalog=PhoneManagement;Integrated Security=True";
+        private string connectionSTR = "Data Source=.\\SQLEXPRESS01;Initial Catalog=PhoneManagement;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {

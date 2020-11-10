@@ -11,7 +11,7 @@ namespace PhoneManagement.DAO
     {
         private static BillInfoDAO instance;
         public static BillInfoDAO Instance
-        {
+        {// tạo thể hiện cho một BillInfoDAO 
             get
             {
                 if (instance == null)
@@ -26,6 +26,7 @@ namespace PhoneManagement.DAO
 
         public List<BillInfo> GetListBillInfo(int id)
         {
+            // hàm lấy danh sách bill infor
             List<BillInfo> listBillInfo = new List<BillInfo>();
             DataTable data = DataProvider.Instance.ExecuteQuery("select * from dbo.BillInfo as bi where bi.id = "+id+" ");
             foreach (DataRow item in data.Rows)
@@ -38,11 +39,13 @@ namespace PhoneManagement.DAO
 
         public void InsertBillInfo(int idBill, int idItemPhone, int count)
         {
+            // thêm Bill infor
             DataProvider.Instance.ExecuteNonQuery("USP_InsertBillInfo3 @idBill , @idItemPhone , @count", new object[] { idBill, idItemPhone, count });
         }
 
         public void DeleteBillInfor(int idItemPhone)
         {
+            //xóa Bill infor
             DataProvider.Instance.ExecuteQuery("delete dbo.BillInfo WHERE idItemPhone = " + idItemPhone);
         }
 

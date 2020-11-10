@@ -28,6 +28,7 @@ namespace PhoneManagement.DTO
 
         public NewBillDTO(DataRow row)
         {
+            // khai báo kiểu dữ liệu tương ứng với sql
             this.IdNewBill = (int)row["idNewBill"];
             this.Name = row["name"].ToString();
             this.Status = row["status"].ToString();

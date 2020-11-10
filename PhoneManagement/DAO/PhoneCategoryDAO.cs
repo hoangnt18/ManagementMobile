@@ -10,12 +10,14 @@ namespace PhoneManagement.DAO
 {
     public class PhoneCategoryDAO
     {
+        // tạo thể hiện phần cho phần tử danh sách phone
         private static PhoneCategoryDAO instance;
         public static int TableWidth = 80;
         public static int TabHeight = 80;
 
         public static PhoneCategoryDAO Instance
         {
+            // tạo thể hiện cho một PhoneCategoryDAO
             get
             {
                 if(instance == null)
@@ -32,6 +34,7 @@ namespace PhoneManagement.DAO
 
         public List<PhoneCategoryDTO> LoadTableListPhoneCate()
         {
+            // liệt kê danh sách mục điện thoại
             List<PhoneCategoryDTO> tableList = new List<PhoneCategoryDTO>();
             DataTable data = DataProvider.Instance.ExecuteQuery("USP_GetListPhoneCategory");
 

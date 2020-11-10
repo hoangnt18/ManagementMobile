@@ -31,6 +31,7 @@ namespace PhoneManagement.DTO
 
         public BillInfoDTO(DataRow row)
         {
+            // khai báo kiểu dữ liệu tương ứng với sql
             this.IdBillInfo = (int)row["idBillInfo"];
             this.idBill = (int)row["idBill"];
             this.IdItemPhone =(int) row["idItemPhone"];
